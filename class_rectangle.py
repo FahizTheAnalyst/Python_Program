@@ -1,27 +1,33 @@
 
-
 class Rectangle:
-    def __init__(self, length, width):
-        self.__length = length # Private attribute
-        self.__width = width # Private attribute
+    def __init__(self, length, breadth):
+        self.length = length
+        self.breadth = breadth
 
     def area(self):
-      return self.__length * self.__width
+        return self.length * self.breadth
 
-    def __lt__(self, other):
-      return self.area() < other.area()
+    def perimeter(self):
+        return 2 * (self.length + self.breadth)
 
-length1 = float(input("Enter the length of Rectangle 1: "))
-width1 = float(input("Enter the width of Rectangle 1: "))
+    def compare_area(self, other):
+        if self.area() > other.area():
+            return "First rectangle is larger."
+        elif self.area() < other.area():
+            return "Second rectangle is larger."
+        return "Both rectangles are equal in area."
 
-length2 = float(input("Enter the length of Rectangle 2: "))
-width2 = float(input("Enter the width of Rectangle 2: "))
 
-rect1 = Rectangle(length1, width1)
-rect2 = Rectangle(length2, width2)
+length1 = float(input("Enter the length of the first rectangle: "))
+breadth1 = float(input("Enter the breadth of the first rectangle: "))
+rect1 = Rectangle(length1, breadth1)
 
-if rect1<rect2:
-    print("Rectangle 1 has a smaller area than Rectangle 2.")
-else:
-    print("Rectangle 1 has an area greater than or equal to Rectangle 2.")
 
+length2 = float(input("Enter the length of the second rectangle: "))
+breadth2 = float(input("Enter the breadth of the second rectangle: "))
+rect2 = Rectangle(length2, breadth2)
+
+
+print(f"Area of first rectangle: {rect1.area()}, Perimeter: {rect1.perimeter()}")
+print(f"Area of second rectangle: {rect2.area()}, Perimeter: {rect2.perimeter()}")
+print(rect1.compare_area(rect2))
